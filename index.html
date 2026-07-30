@@ -1,445 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Black Crow Safety — Website Mockup</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--green:#1A6B3A;--dblue:#1E3A6E;--sky:#74C0E8;--greenlt:#EDF7F1;--bluelt:#EBF6FD;--txt:#111;--txt2:#444;--txt3:#666;--bdr:#e0e0e0;--white:#fff;--page:#f9f9f7;--lgrey:#F5F5F5}
-body{font-family:Arial,sans-serif;background:#1A1A1A;color:var(--txt);font-size:15px;line-height:1.6;padding:20px 12px 48px}
-.outer-note{text-align:center;color:#555;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px}
-.site{max-width:960px;margin:0 auto;background:var(--white);overflow:hidden;border-radius:4px;box-shadow:0 4px 32px rgba(0,0,0,.4)}
-.band{display:flex;height:7px}
-.b-sky{background:var(--sky);flex:3}.b-dark{background:var(--dblue);flex:1}.b-green{background:var(--green);flex:3}
-.bi-green{background:var(--green);flex:3}.bi-dark{background:var(--dblue);flex:1}.bi-sky{background:var(--sky);flex:3}
-.nav{background:var(--dblue);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px}
-.nav-brand{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none}
-.nav-logo{width:38px;height:38px;object-fit:contain}
-.nav-name{color:var(--white);font-weight:700;font-size:17px;letter-spacing:.04em;line-height:1.1}
-.nav-name span{color:var(--sky);font-weight:400;font-size:10px;display:block;letter-spacing:.2em;text-transform:uppercase}
-.nav-links{display:flex;gap:2px;align-items:center}
-.nav-link{color:rgba(255,255,255,.7);font-size:13px;padding:6px 11px;border-radius:4px;cursor:pointer;border:none;background:none;font-family:Arial,sans-serif}
-.nav-link:hover,.nav-link.active{color:var(--white);background:rgba(255,255,255,.1)}
-.nav-cta{background:var(--green);color:var(--white);font-size:13px;font-weight:700;padding:7px 16px;border-radius:4px;cursor:pointer;border:none;font-family:Arial,sans-serif;margin-left:6px}
-.page{display:none}.page.active{display:block}
-.hero{background:var(--dblue);padding:48px 28px 44px;position:relative;overflow:hidden}
-.hero-tag{color:var(--sky);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
-.hero h1{color:var(--white);font-size:32px;font-weight:700;line-height:1.2;margin-bottom:14px;max-width:580px}
-.hero p{color:rgba(255,255,255,.75);font-size:16px;max-width:540px;margin-bottom:26px;line-height:1.7}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-p{background:var(--green);color:var(--white);font-size:14px;font-weight:700;padding:12px 24px;border-radius:4px;cursor:pointer;border:none;font-family:Arial,sans-serif}
-.btn-o{background:transparent;color:var(--white);font-size:14px;font-weight:700;padding:12px 24px;border-radius:4px;cursor:pointer;border:1.5px solid rgba(255,255,255,.35);font-family:Arial,sans-serif}
-.trust{background:var(--greenlt);border-top:2px solid var(--green);padding:12px 28px;display:flex;gap:20px;flex-wrap:wrap;align-items:center}
-.trust-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--green);font-weight:700}
-.t-dot{width:5px;height:5px;background:var(--green);border-radius:50%}
-.section{padding:36px 28px;border-bottom:1px solid var(--bdr)}
-.sec-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);font-weight:700;margin-bottom:8px}
-.section h2{font-size:22px;font-weight:700;color:var(--dblue);margin-bottom:12px}
-.section>p{color:var(--txt2);font-size:14px;margin-bottom:20px;line-height:1.7}
-.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.card{background:var(--lgrey);border:1px solid var(--bdr);border-radius:8px;padding:18px}
-.card-icon{font-size:22px;margin-bottom:10px;display:block}
-.card h3{font-size:14px;font-weight:700;color:var(--dblue);margin-bottom:6px}
-.card p{font-size:13px;color:var(--txt2);line-height:1.6}
-.steps{display:flex;flex-direction:column}
-.step{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--bdr)}
-.step:last-child{border-bottom:none}
-.step-n{width:34px;height:34px;border-radius:50%;background:var(--dblue);color:var(--white);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.step h3{font-size:14px;font-weight:700;color:var(--dblue);margin-bottom:4px}
-.step p{font-size:13px;color:var(--txt2);line-height:1.6}
-.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.tier{border:1px solid var(--bdr);border-radius:8px;overflow:hidden;background:var(--white)}
-.tier.featured{border:2px solid var(--dblue)}
-.tier-head{padding:18px;background:var(--lgrey)}
-.tier.featured .tier-head{background:var(--dblue)}
-.tier-name{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--txt3);margin-bottom:4px}
-.tier.featured .tier-name{color:var(--sky)}
-.tier-price{font-size:32px;font-weight:700;color:var(--dblue);line-height:1}
-.tier.featured .tier-price{color:var(--white)}
-.tier-period{font-size:12px;color:var(--txt3);margin-top:3px}
-.tier.featured .tier-period{color:rgba(255,255,255,.6)}
-.tier-badge{display:inline-block;background:var(--green);color:var(--white);font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;margin-top:6px}
-.tier-body{padding:14px 18px}
-.tier-feat{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--txt2);margin-bottom:8px;line-height:1.5}
-.tier-feat::before{content:"✓";color:var(--green);font-weight:700;flex-shrink:0}
-.tier-btn{display:block;width:calc(100% - 36px);margin:0 18px 18px;padding:10px;text-align:center;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;font-family:Arial,sans-serif}
-.tier-btn-o{background:transparent;border:1.5px solid var(--dblue);color:var(--dblue)}
-.tier-btn-f{background:var(--dblue);color:var(--white);border:none}
-.addon-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
-.addon{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:var(--lgrey);border:1px solid var(--bdr);border-radius:6px;font-size:13px}
-.addon-name{color:var(--txt2)}.addon-price{font-weight:700;color:var(--dblue)}
-.green-bar{background:var(--green);color:var(--white);padding:16px 28px;font-size:15px;font-weight:700;text-align:center}
-.green-bar span{font-weight:400;opacity:.85}
-.lytom-box{background:var(--bluelt);border:1px solid #c8d8f0;border-radius:8px;padding:20px;margin-top:16px}
-.lytom-box h3{font-size:15px;font-weight:700;color:var(--dblue);margin-bottom:10px}
-.lytom-box p{font-size:13.5px;color:var(--txt2);line-height:1.7;margin-bottom:10px}
-.lytom-feats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
-.lytom-feat{font-size:12.5px;color:var(--txt2);padding:7px 10px;background:rgba(255,255,255,.7);border-radius:5px;border:1px solid #c8d8f0}
-.lytom-feat::before{content:"✓ ";color:var(--green);font-weight:700}
-.about-box{background:var(--bluelt);border-radius:8px;padding:22px;border:1px solid #c8d8f0}
-.about-box h3{font-size:15px;font-weight:700;color:var(--dblue);margin-bottom:10px}
-.about-box p{font-size:13.5px;color:var(--txt2);line-height:1.7;margin-bottom:10px}
-.creds{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.cred{background:var(--dblue);color:var(--white);font-size:11px;font-weight:700;padding:3px 10px;border-radius:3px}
-.form-row{margin-bottom:14px}
-.form-row label{display:block;font-size:13px;font-weight:700;color:var(--dblue);margin-bottom:5px}
-.form-row input,.form-row select,.form-row textarea{width:100%;padding:10px 12px;border:1px solid var(--bdr);border-radius:4px;font-size:14px;font-family:Arial,sans-serif;color:var(--txt)}
-.form-row textarea{height:100px;resize:vertical}
-.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--dblue)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
-.form-grid .form-row{margin-bottom:0}
-.submit-btn{background:var(--green);color:var(--white);font-size:14px;font-weight:700;padding:12px 28px;border-radius:4px;border:none;cursor:pointer;font-family:Arial,sans-serif;width:100%}
-.form-note{font-size:12px;color:var(--txt3);margin-top:8px;text-align:center}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.signup-box{background:var(--lgrey);border:1px solid var(--bdr);border-radius:8px;padding:24px}
-.signup-box h3{font-size:16px;font-weight:700;color:var(--dblue);margin-bottom:6px}
-.signup-box>p{font-size:13px;color:var(--txt2);margin-bottom:18px}
-.tier-sel{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:18px}
-.ts-opt{border:1.5px solid var(--bdr);border-radius:6px;padding:10px 8px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;color:var(--txt2);background:var(--white)}
-.ts-opt.sel{border:2px solid var(--dblue);color:var(--dblue);background:var(--bluelt)}
-.ts-price{font-size:20px;font-weight:700;color:var(--dblue);display:block;margin-bottom:2px}
-.login-outer{max-width:360px;margin:0 auto;padding:36px 20px}
-.login-box{background:var(--lgrey);border:1px solid var(--bdr);border-radius:8px;padding:30px;text-align:center}
-.login-badge{background:var(--dblue);color:var(--white);font-size:11px;font-weight:700;padding:3px 12px;border-radius:3px;display:inline-block;margin-bottom:20px}
-.footer{background:var(--dblue);padding:28px 28px 0}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:24px;margin-bottom:22px}
-.footer-col h4{color:var(--sky);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
-.footer-col p{color:rgba(255,255,255,.55);font-size:12.5px;line-height:1.8}
-.footer-col a{color:rgba(255,255,255,.55);font-size:12.5px;line-height:2;display:block;text-decoration:none;cursor:pointer}
-.footer-col a:hover{color:var(--white)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:12px 0;display:flex;justify-content:space-between}
-.footer-bottom p{color:rgba(255,255,255,.35);font-size:11.5px}
-</style>
-</head>
-<body>
-<p class="outer-note">Black Crow Safety — Website Mockup · Click nav links to navigate</p>
-<div class="site">
-<div class="band"><div class="b-sky"></div><div class="b-dark"></div><div class="b-green"></div></div>
-<nav class="nav">
-  <a class="nav-brand" onclick="show('home')">
-    <img class="nav-logo" src="BLACK_CROW_LOGO.svg" alt="Black Crow Safety">
-    <div class="nav-name">BLACK CROW SAFETY<span>Health &amp; Safety Consultancy</span></div>
-  </a>
-  <div class="nav-links">
-    <button class="nav-link active" onclick="show('home')">Home</button>
-    <button class="nav-link" onclick="show('services')">Services</button>
-    <button class="nav-link" onclick="show('about')">About</button>
-    <button class="nav-link" onclick="show('contact')">Contact</button>
-    <button class="nav-cta" onclick="show('login')">Client login</button>
-  </div>
-</nav>
+BLACK CROW SAFETY — WEBSITE MOCKUP · CLICK NAV LINKS TO NAVIGATE
 
-<!-- HOME -->
-<div id="page-home" class="page active">
-  <div class="hero">
-    <p class="hero-tag">Health and Safety for owner-managed businesses</p>
-    <h1>Your H&amp;S sorted. So you can get on with running your business.</h1>
-    <p>Black Crow Safety provides practical, proportionate health and safety support for small businesses across Cwmbran, Torfaen and South East Wales. We become your named Competent Person — so you're covered, documented and legally compliant.</p>
-    <div class="hero-btns">
-      <button class="btn-p" onclick="show('services')">See our services</button>
-      <button class="btn-o" onclick="show('contact')">Book a free site visit</button>
-    </div>
-  </div>
-  <div class="trust">
-    <div class="trust-item"><div class="t-dot"></div>CMgr Chartered Manager</div>
-    <div class="trust-item"><div class="t-dot"></div>NEBOSH certified</div>
-    <div class="trust-item"><div class="t-dot"></div>IOSH member</div>
-    <div class="trust-item"><div class="t-dot"></div>Over 40 years' experience</div>
-    <div class="trust-item"><div class="t-dot"></div>Local — Cwmbran based</div>
-    <div class="trust-item"><div class="t-dot"></div>Professionally insured</div>
-  </div>
-  <div class="section">
-    <p class="sec-tag">Why Black Crow Safety</p>
-    <h2>Health and safety doesn't have to be complicated</h2>
-    <p>Most small businesses know they should take health and safety seriously. The problem is finding the time, confidence and support to do it properly. That's exactly what we're here for.</p>
-    <div class="card-grid">
-      <div class="card"><span class="card-icon">⚖️</span><h3>Your legal duties met</h3><p>The law requires every employer to have access to a competent person. We become that person — named, documented and available when you need us.</p></div>
-      <div class="card"><span class="card-icon">📍</span><h3>Local and personal</h3><p>We know the industrial estates in Cwmbran and Torfaen. You get James — not a call centre, not a helpline number.</p></div>
-      <div class="card"><span class="card-icon">💷</span><h3>Affordable monthly retainer</h3><p>From £200/month — far less than the cost of an HSE fine, and a fraction of what a full-time H&amp;S employee would cost.</p></div>
-      <div class="card"><span class="card-icon">🖥️</span><h3>Your own client portal</h3><p>Every retainer client gets a secure online portal — access documents, upload certificates, track actions and manage your COSHH register 24/7.</p></div>
-    </div>
-  </div>
-  <div class="green-bar">Ready to get your H&amp;S sorted? <span>It starts with a free, no-obligation 30-minute review of your business.</span></div>
-  <div class="section" style="background:var(--lgrey)">
-    <p class="sec-tag">How it works</p>
-    <h2>Four steps to being properly covered</h2>
-    <div class="steps">
-      <div class="step"><div class="step-n">1</div><div><h3>Free site health check</h3><p>We visit your premises for a no-obligation 30-minute review. We give you an honest RAG-rated assessment of your current H&amp;S position — no jargon, no hard sell, no invoice.</p></div></div>
-      <div class="step"><div class="step-n">2</div><div><h3>We build your H&amp;S foundation</h3><p>We produce your bespoke H&amp;S Policy, Risk Assessments, Fire Risk Assessment, COSHH Assessment and Emergency Procedures — completed on site and delivered as professional PDF documents.</p></div></div>
-      <div class="step"><div class="step-n">3</div><div><h3>Your client portal goes live</h3><p>We set up your secure client portal. All your documents are there, alongside your action plan, COSHH register and renewal dates. You can upload your own certificates and records directly.</p></div></div>
-      <div class="step"><div class="step-n">4</div><div><h3>Ongoing partnership begins</h3><p>We become your named Competent Person — available by phone and email, reviewing your documents annually, visiting quarterly on the Complete plan, supporting you when things change or go wrong.</p></div></div>
-    </div>
-  </div>
-  <div class="section">
-    <p class="sec-tag">Pricing</p>
-    <h2>Simple, transparent pricing</h2>
-    <p>No hidden fees. No long contracts. Cancel with 30 days notice. All retainer packages include your managed client portal.</p>
-    <div class="tier-grid">
-      <div class="tier">
-        <div class="tier-head"><div class="tier-name">Starter</div><div class="tier-price">£650</div><div class="tier-period">one-off</div></div>
-        <div class="tier-body">
-          <div class="tier-feat">Bespoke H&amp;S Policy</div>
-          <div class="tier-feat">Core risk assessments</div>
-          <div class="tier-feat">Fire risk assessment</div>
-          <div class="tier-feat">Emergency procedures</div>
-          <div class="tier-feat">Accident log</div>
-        </div>
-        <button class="tier-btn tier-btn-o" onclick="show('signup')">Get started</button>
-      </div>
-      <div class="tier featured">
-        <div class="tier-head"><div class="tier-name">Essential</div><div class="tier-price">£200</div><div class="tier-period">/month — 30 days notice</div><span class="tier-badge">Most popular</span></div>
-        <div class="tier-body">
-          <div class="tier-feat">All Starter documents</div>
-          <div class="tier-feat">Named Competent Person</div>
-          <div class="tier-feat">Managed client portal included</div>
-          <div class="tier-feat">Unlimited phone &amp; email advice</div>
-          <div class="tier-feat">Annual document review</div>
-          <div class="tier-feat">CHAS application support (fee extra)</div>
-        </div>
-        <button class="tier-btn tier-btn-f" onclick="show('signup')">Get started</button>
-      </div>
-      <div class="tier">
-        <div class="tier-head"><div class="tier-name">Complete</div><div class="tier-price">£275</div><div class="tier-period">/month — 30 days notice</div></div>
-        <div class="tier-body">
-          <div class="tier-feat">All Essential services</div>
-          <div class="tier-feat">Quarterly on-site visits</div>
-          <div class="tier-feat">2 toolbox talks per year</div>
-          <div class="tier-feat">Incident investigation support</div>
-          <div class="tier-feat">Priority same-day response</div>
-          <div class="tier-feat">COSHH register fully managed</div>
-        </div>
-        <button class="tier-btn tier-btn-o" onclick="show('signup')">Get started</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- SERVICES -->
-<div id="page-services" class="page">
-  <div class="section">
-    <p class="sec-tag">What we do</p>
-    <h2>Services and pricing</h2>
-    <p>Every business is different. All retainer packages include your managed Black Crow Safety client portal — your documents, action plans, COSHH register and renewal dates, all in one secure place.</p>
-    <div class="tier-grid" style="margin-bottom:20px">
-      <div class="tier">
-        <div class="tier-head"><div class="tier-name">Starter</div><div class="tier-price">£650</div><div class="tier-period">one-off payment</div></div>
-        <div class="tier-body">
-          <div class="tier-feat">Bespoke H&amp;S Policy</div>
-          <div class="tier-feat">Core risk assessment suite</div>
-          <div class="tier-feat">Fire risk assessment</div>
-          <div class="tier-feat">Emergency procedures</div>
-          <div class="tier-feat">Accident and near miss log</div>
-          <div class="tier-feat">All documents as professional PDFs</div>
-        </div>
-        <button class="tier-btn tier-btn-o" onclick="show('signup')">Get started</button>
-      </div>
-      <div class="tier featured">
-        <div class="tier-head"><div class="tier-name">Essential</div><div class="tier-price">£200</div><div class="tier-period">/month — 30 days notice</div><span class="tier-badge">Most popular</span></div>
-        <div class="tier-body">
-          <div class="tier-feat">All Starter documents</div>
-          <div class="tier-feat">Named Competent Person (legally required)</div>
-          <div class="tier-feat">Managed client portal — 24/7 access</div>
-          <div class="tier-feat">Upload your own certificates &amp; records</div>
-          <div class="tier-feat">Unlimited phone and email advice</div>
-          <div class="tier-feat">Annual document review</div>
-          <div class="tier-feat">Accident investigation support</div>
-          <div class="tier-feat">CHAS application support (submission fee extra)</div>
-        </div>
-        <button class="tier-btn tier-btn-f" onclick="show('signup')">Get started</button>
-      </div>
-      <div class="tier">
-        <div class="tier-head"><div class="tier-name">Complete</div><div class="tier-price">£275</div><div class="tier-period">/month — 30 days notice</div></div>
-        <div class="tier-body">
-          <div class="tier-feat">Everything in Essential</div>
-          <div class="tier-feat">Quarterly on-site review visits</div>
-          <div class="tier-feat">2 on-site toolbox talks per year</div>
-          <div class="tier-feat">Priority same-day response</div>
-          <div class="tier-feat">COSHH register fully managed</div>
-          <div class="tier-feat">Incident investigation included</div>
-        </div>
-        <button class="tier-btn tier-btn-o" onclick="show('signup')">Get started</button>
-      </div>
-    </div>
-    <div class="lytom-box">
-      <h3>Your Black Crow Safety Client Portal — included in all retainer packages</h3>
-      <p>Every retainer client gets their own secure online portal, set up and managed by us. It's your compliance record, available any time from any device.</p>
-      <div class="lytom-feats">
-        <div class="lytom-feat">All H&amp;S documents as PDFs</div>
-        <div class="lytom-feat">Upload your own certificates &amp; records</div>
-        <div class="lytom-feat">Action plan with due dates</div>
-        <div class="lytom-feat">Log incidents &amp; near misses directly</div>
-        <div class="lytom-feat">COSHH register with HSE guidance links</div>
-        <div class="lytom-feat">Renewal date calendar</div>
-        <div class="lytom-feat">Secure — your data, your access only</div>
-        <div class="lytom-feat">Access from any device, any time</div>
-      </div>
-    </div>
-    <h2 style="margin-top:28px;margin-bottom:12px;font-size:19px">Additional services</h2>
-    <p style="font-size:13px;color:var(--txt2);margin-bottom:12px">Available to all clients. All prices exclude VAT.</p>
-    <div class="addon-grid">
-      <div class="addon"><span class="addon-name">Manual handling training (up to 12)</span><span class="addon-price">£350</span></div>
-      <div class="addon"><span class="addon-name">MHE / forklift awareness for managers</span><span class="addon-price">£400</span></div>
-      <div class="addon"><span class="addon-name">Fire warden training (up to 12)</span><span class="addon-price">£300</span></div>
-      <div class="addon"><span class="addon-name">Standalone fire risk assessment</span><span class="addon-price">£350–500</span></div>
-      <div class="addon"><span class="addon-name">COSHH assessment (per substance group)</span><span class="addon-price">£75</span></div>
-      <div class="addon"><span class="addon-name">CHAS / SafeContractor application support</span><span class="addon-price">£150–250</span></div>
-      <div class="addon"><span class="addon-name">Incident investigation</span><span class="addon-price">£450/day</span></div>
-      <div class="addon"><span class="addon-name">Ad hoc consultancy</span><span class="addon-price">£60/hr</span></div>
-    </div>
-    <p style="font-size:12px;color:var(--txt3);margin-top:10px">CHAS/SafeContractor support covers James's time only. Clients pay the submission fee directly to CHAS (typically £300–500 depending on turnover band).</p>
-  </div>
-  <div class="green-bar">All retainer clients get a free 30-minute initial site visit. <span>No obligation. Just an honest conversation.</span></div>
-</div>
 
-<!-- ABOUT -->
-<div id="page-about" class="page">
-  <div class="section">
-    <p class="sec-tag">About Black Crow Safety</p>
-    <h2>Why this business exists</h2>
-    <p>Owner-managed businesses are expected to manage increasingly complex health and safety responsibilities without the time, confidence or support to do it properly. Black Crow Safety was created to change that — by becoming a trusted partner, not another supplier.</p>
-    <div class="about-box">
-      <h3>James Barr — Principal Consultant</h3>
-      <p>James has spent over 40 years working in environments where safety decisions have real and immediate consequences — the British Army, McLaren Racing in Formula 1, commercial aviation under CAA regulation, and most recently as HSSEQ and Training Lead for a major national equipment hire company managing seven trainers across the UK and Ireland.</p>
-      <p>That career wasn't built in a compliance office. It was built on operational leadership — managing real risk, in real environments, where getting it wrong has real consequences. That experience shapes everything about the way Black Crow Safety works.</p>
-      <p>Black Crow Safety is based in Cwmbran — named from the Welsh meaning of the town: Valley of the Crows. We serve businesses across Torfaen, Newport, Monmouthshire and South East Wales.</p>
-      <div class="creds"><span class="cred">CMgr</span><span class="cred">NEBOSH</span><span class="cred">IOSH</span><span class="cred">Level 3 AET</span><span class="cred">RTITB</span><span class="cred">CMI Level 5</span><span class="cred">40+ years experience</span></div>
-    </div>
-  </div>
-  <div class="section">
-    <p class="sec-tag">Our approach</p>
-    <h2>Health and safety as good management</h2>
-    <p>Most consultants are paid to deliver a report. Black Crow Safety is built to deliver outcomes. The measure of success isn't the number of pages in a document — it's whether your business is genuinely safer and better protected.</p>
-    <div class="card-grid">
-      <div class="card"><span class="card-icon">💬</span><h3>Plain English always</h3><p>No jargon. No legislation you can't act on. Clear advice you can understand and use in your business.</p></div>
-      <div class="card"><span class="card-icon">⚖️</span><h3>Proportionate to your business</h3><p>A 6-person engineering unit needs different support to a 20-person manufacturer. We tailor everything.</p></div>
-      <div class="card"><span class="card-icon">🤝</span><h3>Partnership not paperwork</h3><p>We become part of your management team — not another supplier you hear from once a year when the invoice is due.</p></div>
-      <div class="card"><span class="card-icon">🛡️</span><h3>Honest about our limits</h3><p>We focus on general industry H&amp;S for SMEs. Where specialist expertise is needed — such as construction CDM — we say so clearly.</p></div>
-    </div>
-  </div>
-</div>
 
-<!-- CONTACT -->
-<div id="page-contact" class="page">
-  <div class="section">
-    <p class="sec-tag">Get in touch</p>
-    <h2>Talk to us</h2>
-    <p>Whether you want to book a free health check, ask a question or find out more — fill in the form and we'll get back to you within one working day.</p>
-    <div class="form-grid">
-      <div class="form-row"><label>First name</label><input type="text" placeholder="Your first name"></div>
-      <div class="form-row"><label>Last name</label><input type="text" placeholder="Your last name"></div>
-    </div>
-    <div class="form-grid">
-      <div class="form-row"><label>Email address</label><input type="email" placeholder="name@yourbusiness.co.uk"></div>
-      <div class="form-row"><label>Phone number</label><input type="tel" placeholder="07XXX XXXXXX"></div>
-    </div>
-    <div class="form-row"><label>Business name</label><input type="text" placeholder="Your company name"></div>
-    <div class="form-row"><label>What do you need help with?</label>
-      <select><option>— Select —</option><option>Free 30-minute site health check</option><option>Essential retainer (£200/month)</option><option>Complete retainer (£275/month)</option><option>Training</option><option>Fire risk assessment</option><option>CHAS / SafeContractor support</option><option>General enquiry</option></select>
-    </div>
-    <div class="form-row"><label>Anything else?</label><textarea placeholder="Tell us a bit about your business and what you're looking for."></textarea></div>
-    <button class="submit-btn" onclick="this.textContent='Message sent — we\'ll be in touch shortly'">Send message</button>
-    <p class="form-note">We typically respond within one working day. Your details will never be shared with third parties.</p>
-  </div>
-  <div class="section" style="background:var(--lgrey)">
-    <p class="sec-tag">Direct contact</p>
-    <h2>Contact details</h2>
-    <div class="contact-grid">
-      <div class="card"><span class="card-icon">📞</span><h3>Phone</h3><p>07XXX XXXXXX<br><span style="font-size:12px;color:var(--txt3)">Mon–Fri, 8am–6pm</span></p></div>
-      <div class="card"><span class="card-icon">✉️</span><h3>Email</h3><p>james.barr@blackcrowsafety.co.uk<br>info@blackcrowsafety.co.uk<br><span style="font-size:12px;color:var(--txt3)">Reply within one working day</span></p></div>
-      <div class="card"><span class="card-icon">📍</span><h3>Based in</h3><p>Cwmbran, Torfaen, Wales<br><span style="font-size:12px;color:var(--txt3)">Serving South East Wales</span></p></div>
-      <div class="card"><span class="card-icon">💼</span><h3>LinkedIn</h3><p>Find us on LinkedIn<br><span style="font-size:12px;color:var(--txt3)">News and practical H&amp;S tips</span></p></div>
-    </div>
-  </div>
-</div>
+BLACK CROW SAFETY
+HEALTH & SAFETY CONSULTANCY
+Home
+Services
+About
+Contact
+Client login
+HEALTH AND SAFETY FOR OWNER-MANAGED BUSINESSES
+Your H&S sorted. So you can get on with running your business.
+Black Crow Safety provides practical, proportionate health and safety support for small businesses across Cwmbran, Torfaen and South East Wales. We become your named Competent Person — so you're covered, documented and legally compliant.
+See our services
+Book a free site visit
 
-<!-- SIGN UP -->
-<div id="page-signup" class="page">
-  <div class="section">
-    <p class="sec-tag">Get started</p>
-    <h2>Choose your package</h2>
-    <p>Not sure which is right for you? Start with a free health check — we'll recommend the right option based on what we find.</p>
-    <div class="signup-box">
-      <h3>Select your package</h3>
-      <p>All retainer packages include a free initial site visit and your managed client portal from day one.</p>
-      <div class="tier-sel">
-        <div class="ts-opt" onclick="selTier(this)"><span class="ts-price">£650</span>Starter<br><span style="font-size:10px;color:var(--txt3)">one-off</span></div>
-        <div class="ts-opt sel" onclick="selTier(this)"><span class="ts-price">£200</span>Essential<br><span style="font-size:10px;color:var(--txt3)">/month</span></div>
-        <div class="ts-opt" onclick="selTier(this)"><span class="ts-price">£275</span>Complete<br><span style="font-size:10px;color:var(--txt3)">/month</span></div>
-      </div>
-      <div class="form-grid">
-        <div class="form-row"><label>First name</label><input type="text" placeholder="First name"></div>
-        <div class="form-row"><label>Last name</label><input type="text" placeholder="Last name"></div>
-      </div>
-      <div class="form-row"><label>Business name</label><input type="text" placeholder="Your company name"></div>
-      <div class="form-row"><label>Email address</label><input type="email" placeholder="name@yourbusiness.co.uk"></div>
-      <div class="form-row"><label>Phone number</label><input type="tel" placeholder="07XXX XXXXXX"></div>
-      <button class="submit-btn" onclick="this.textContent='Request received — James will be in touch to arrange your free site visit'">Request your free site visit</button>
-      <p class="form-note">No payment taken now. We visit first, confirm your package, then set everything up. 30 days notice to cancel at any time.</p>
-    </div>
-  </div>
-</div>
+CMgr Chartered Manager
 
-<!-- CLIENT LOGIN -->
-<div id="page-login" class="page">
-  <div class="login-outer">
-    <div class="login-box">
-      <span class="login-badge">Client Portal</span>
-      <h2 style="font-size:19px;font-weight:700;color:var(--dblue);margin-bottom:6px">Client portal</h2>
-      <p style="font-size:13px;color:var(--txt2);margin-bottom:20px">Access your H&amp;S documents, upload certificates, manage your action plan and COSHH register — all in your secure Black Crow Safety client portal.</p>
-      <a href="https://app.lytom.com/login" target="_blank" style="display:block;background:var(--dblue);color:var(--white);font-size:14px;font-weight:700;padding:13px 28px;border-radius:4px;text-decoration:none;text-align:center;margin-bottom:16px">Go to my client portal →</a>
-      <p style="font-size:12px;color:var(--txt3);margin-bottom:16px">You'll be taken to your secure portal in a new tab. Log in with the email address and password you were given when your account was set up.</p>
-      <div style="background:var(--lgrey);border:1px solid var(--bdr);border-radius:6px;padding:12px;margin-bottom:14px">
-        <p style="font-size:12px;color:var(--txt2);font-weight:700;margin-bottom:6px">In your portal you can:</p>
-        <p style="font-size:12px;color:var(--txt2);line-height:1.8">✓ View and download all your H&amp;S documents<br>✓ Upload certificates, training records and supporting documents<br>✓ Track your action plan and mark items complete<br>✓ Log incidents and near misses<br>✓ Access your COSHH register with HSE guidance links<br>✓ Check renewal and review dates</p>
-      </div>
-      <p style="font-size:12.5px;color:var(--txt3)">Not a client yet? <span style="color:var(--dblue);cursor:pointer;font-weight:700" onclick="show('signup')">Get started here</span></p>
-      <p style="font-size:12px;color:var(--txt3);margin-top:10px">Portal access problems? Call James on 07XXX XXXXXX or email info@blackcrowsafety.co.uk</p>
-    </div>
-  </div>
-</div>
+NEBOSH certified
 
-<footer class="footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4>Black Crow Safety</h4>
-      <p>Health and safety partnership for owner-managed businesses in South East Wales.</p>
-      <p style="margin-top:8px">James Barr CMgr · NEBOSH · IOSH</p>
-      <p style="margin-top:4px">james.barr@blackcrowsafety.co.uk<br>info@blackcrowsafety.co.uk</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <a onclick="show('services')">Starter package — £650</a>
-      <a onclick="show('services')">Essential retainer — £200/month</a>
-      <a onclick="show('services')">Complete retainer — £275/month</a>
-      <a onclick="show('services')">Additional services</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a onclick="show('about')">About us</a>
-      <a onclick="show('contact')">Contact</a>
-      <a onclick="show('signup')">Get started</a>
-      <a onclick="show('login')">Client login</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Black Crow Safety. James Barr trading as Black Crow Safety. Professionally insured.</p>
-    <p>blackcrowsafety.co.uk</p>
-  </div>
-</footer>
-<div class="band"><div class="bi-green"></div><div class="bi-dark"></div><div class="bi-sky"></div></div>
-</div>
+IOSH member
 
-<script>
-function show(p){
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('active'));
-  document.getElementById('page-'+p).classList.add('active');
-  const m={home:0,services:1,about:2,contact:3};
-  if(m[p]!==undefined) document.querySelectorAll('.nav-link')[m[p]].classList.add('active');
-  window.scrollTo(0,0);
-}
-function selTier(el){document.querySelectorAll('.ts-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel')}
-</script>
-</body>
-</html>
+Over 40 years' experience
+
+Local — Cwmbran based
+
+Professionally insured
+WHY BLACK CROW SAFETY
+Health and safety doesn't have to be complicated
+Most small businesses know they should take health and safety seriously. The problem is finding the time, confidence and support to do it properly. That's exactly what we're here for.
+⚖️
+Your legal duties met
+The law requires every employer to have access to a competent person. We become that person — named, documented and available when you need us.
+📍
+Local and personal
+We know the industrial estates in Cwmbran and Torfaen. You get James — not a call centre, not a helpline number.
+💷
+Affordable monthly retainer
+From £200/month — far less than the cost of an HSE fine, and a fraction of what a full-time H&S employee would cost.
+🖥️
+Your own client portal
+Every retainer client gets a secure online portal — access documents, upload certificates, track actions and manage your COSHH register 24/7.
+Ready to get your H&S sorted? It starts with a free, no-obligation 30-minute review of your business.
+HOW IT WORKS
+Four steps to being properly covered
+1
+Free site health check
+We visit your premises for a no-obligation 30-minute review. We give you an honest RAG-rated assessment of your current H&S position — no jargon, no hard sell, no invoice.
+2
+We build your H&S foundation
+We produce your bespoke H&S Policy, Risk Assessments, Fire Risk Assessment, COSHH Assessment and Emergency Procedures — completed on site and delivered as professional PDF documents.
+3
+Your client portal goes live
+We set up your secure client portal. All your documents are there, alongside your action plan, COSHH register and renewal dates. You can upload your own certificates and records directly.
+4
+Ongoing partnership begins
+We become your named Competent Person — available by phone and email, reviewing your documents annually, visiting quarterly on the Complete plan, supporting you when things change or go wrong.
+PRICING
+Simple, transparent pricing
+No hidden fees. No long contracts. Cancel with 30 days notice. All retainer packages include your managed client portal.
+STARTER
+£650
+one-off
+Bespoke H&S Policy Core risk assessments Fire risk assessment Emergency procedures Accident log
+Get started
+ESSENTIAL
+£200
+/month — 30 days notice
+Most popular
+All Starter documents Named Competent Person Managed client portal included Unlimited phone & email advice Annual document review CHAS application support (fee extra)
+Get started
+COMPLETE
+£275
+/month — 30 days notice
+All Essential services Quarterly on-site visits 2 toolbox talks per year Incident investigation support Priority same-day response COSHH register fully managed
+Get started
+BLACK CROW SAFETY
+Health and safety partnership for owner-managed businesses in South East Wales.
+James Barr CMgr · NEBOSH · IOSH
+james.barr@blackcrowsafety.co.uk info@blackcrowsafety.co.uk
+SERVICES
+Starter package — £650
+Essential retainer — £200/month
+Complete retainer — £275/month
+Additional services
+COMPANY
+About us
+Contact
+Get started
+Client login
+© 2026 Black Crow Safety. James Barr trading as Black Crow Safety. Professionally insured.
+blackcrowsafety.co.uk
+
+
+
